@@ -36,7 +36,7 @@ export default {
       ],
       filters: ["bought", "borrowed"],
       holding: "bought",
-      searchInput: ""
+      searchInput: "",
     };
   },
   components: {
@@ -48,7 +48,9 @@ export default {
       return _.filter(this.books, ["ownership", this.holding])
     },
     searchedBooks(){
-      const searchFilter = book => {return book.title.toLowerCase().mach(this.searchInput.toLowerCase());}
+      const searchFilter = book => {
+        return book.title.toLowerCase().mach(this.searchInput.toLowerCase());
+        };
       return _.filter(this.books, searchFilter);
     }
   },
