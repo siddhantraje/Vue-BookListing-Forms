@@ -8,7 +8,7 @@
     <hr>
     <h2>Filtered Books by Ownership</h2>
     <select v-model="holding">
-      <option v-for="filter in filters">{{filter}}</option>
+      <option v-for="filter in filters" :key="filter">{{filter}}</option>
     </select>
     <ul>
       <book-item v-for='book in filteredBooks' :key='book.id' :book='book'></book-item>
@@ -48,9 +48,7 @@ export default {
       return _.filter(this.books, ["ownership", this.holding])
     },
     searchedBooks(){
-      const searchFilter = book => {
-        return book.title.toLowerCase().mach(this.searchInput.toLowerCase());        
-      }
+      const searchFilter = book => book.title.toLowerCase().mach(this.searchInput.toLowerCase());
       return _.filter(this.books, searchFilter);
     }
   },
